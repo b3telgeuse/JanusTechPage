@@ -3,7 +3,7 @@ from flask_app.models import user
 
 
 class Trees:
-    db = 'Arbortrary'
+    db = 'janusII'
     def __init__(self,data):
         self.id = data['id']
         self.species = data['species']

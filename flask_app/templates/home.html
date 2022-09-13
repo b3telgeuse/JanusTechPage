@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+
+
+
+<body class="bg-secondary ">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid px-3 py-1">
+                {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="messages">
+        {% with messages = get_flashed_messages() %}
+            {%if messages %}
+                {% for m in messages %}
+                    <h5 class="ms-3">{{m}}</h5>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+
+
+<!-- Title -->
+    <main class="py-4">
+        <div class="position-absolute top-10 start-50 translate-middle-x">
+            <h2 class="text-warning font-monospace">Welcome to Janus Technologies !</h2>
+        </div>
+
+
+        <div class="mx-5 py-4 d-flex align-items-start justify-content-around">
+<!-- Who We Are card -->
+            <div class="card m-5 bg-light" style="width: 50rem;">
+                <div class="card-body ">
+                    <h5 class="card-title fs-4">Who We Are . . .</h5>
+                    <p class="card-text fs-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed elementum neque. Nam at dui nisl. Vestibulum ultrices hendrerit erat, vehicula laoreet ipsum molestie quis. Proin elit nulla, finibus ut ipsum sed, feugiat scelerisque justo. Curabitur elementum gravida urna, eu condimentum enim maximus eu. Suspendisse rhoncus gravida purus id volutpat. Vivamus scelerisque vestibulum nisl, in luctus est aliquet ac. Duis iaculis finibus augue et vulputate. In gravida interdum mi, et vehicula eros posuere sed. Pellentesque eros est, volutpat sit amet consectetur non, lobortis eget diam. Phasellus nunc felis, bibendum eu orci ut, dictum mollis turpis. In hac habitasse platea dictumst. Fusce interdum fringilla velit ac pellentesque. Integer ornare urna ac metus congue, nec elementum ligula imperdiet.
+                        Sed placerat sagittis tellus, molestie ornare elit consequat ornare elit consequat  ornare elit consequat ornare elit consequat ornare elit consequat  ornare elit consequat ornare elit consequat ornare elit consequateget. Cras nec diam  dfgdfg dgfsdgf consequat, euismod arcu ac, pellentesque quam. Maecenas iaculis sapien non magna gravida rhoncus. In tristique viverra massa ac semper. Fusce rhoncus aliquam sem, vel sagittis quam finibus vel. Duis magna lacus, porttitor sit amet quam vel, tincidunt tincidunt mauris. Vestibulum porta, neque eu mollis aliquet, quam lectus tincidunt leo, at lobortis velitttis tellus, molestie ornare elit consequat eget. Sed placerat sagittis tellus, molestie ornare elinoempor nunc fringilla a.</p>
+                </div>
+            </div>
+
+<!-- What We Do card -->
+            <div>
+                <div class="card m-5 bg-light" style="width: 50rem;">
+                    <div class="card-body ">
+                        <h5 class="card-title fs-4">What We Do . . .</h5>
+                        <p class="card-text fs-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper congue erat, non tempor nunc fringilla a. Aliquam vestibulum posuere erat, sit amet rutrum tellus accumsan tristique. Nulla ac consectetur nibh. In a commodo mauris. Ut eu augue semper, tempus ligula ac, pellentesque sem. Quisque tristique orci gravida elit dictum, sed ultricies est tempor. Proin laoreet metus id finibus eleifend.
+                            Nam  faucibus in, lobortis eu velit.Ut vestibulum molestie sem, sed congue turpis congue vitae. Aenean semper, dui sed ullamcorper euismod, ex tellus auctor justo, non aliquam dui massa scelerisque risus. Vivamus consectetur efficitur ante. Vivamus interdum viverra leo, non faucibus velit maximus sit amet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@ def index():
     if 'user_id' not in session:
         return render_template('index.html')
     else:
-        return redirect('/dashboard/')
+        return redirect('/home/')
 
 
 
@@ -37,7 +37,7 @@ def register():
         else:
             session['user_id'] = id
             flash("You are now logged in")
-            return redirect('/dashboard/')
+            return redirect('/home/')
 
 
 
@@ -56,7 +56,7 @@ def login():
     else:
         session['user_id'] = user.id
         flash("You are now logged in")
-        return redirect('/dashboard/')
+        return redirect('/home/')
 
 
 
@@ -67,8 +67,8 @@ def logout():
 
 
 
-@app.route('/dashboard/')
-def dashboard():
+@app.route('/home/')
+def home():
     if 'user_id' not in session:
         return redirect('/')
     else:
@@ -78,12 +78,12 @@ def dashboard():
         theUser = User.getOne(data)
         theTrees = Trees.getAll()
         theUsers = User.getAll()
-        return render_template('dashboard.html', user=theUser, trees=theTrees, users=theUsers)
+        return render_template('home.html', user=theUser, trees=theTrees, users=theUsers)
 
 
 
-@app.route('/usersTrees/')
-def usersTrees():
+@app.route('/about/')
+def about():
     if 'user_id' not in session:
         return redirect('/')
     else:
@@ -93,6 +93,19 @@ def usersTrees():
         theUser = User.getOne(data)
         theTrees = Trees.getAll()
         theUsers = User.getAll()
-        return render_template('usersTrees.html', user=theUser, trees=theTrees, users=theUsers)
+        return render_template('about.html', user=theUser, trees=theTrees, users=theUsers)
 
-        
+
+
+@app.route('/library/')
+def library():
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        data = {
+            'id': session['user_id']
+        }
+        theUser = User.getOne(data)
+        theTrees = Trees.getAll()
+        theUsers = User.getAll()
+        return render_template('library.html', user=theUser, trees=theTrees, users=theUsers)

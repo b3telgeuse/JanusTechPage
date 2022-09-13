@@ -6,7 +6,7 @@ from flask_app.models import tree
 
 
 class User:
-    db = 'Arbortrary'
+    db = 'janusII'
     def __init__(self, data):
         self.id = data['id']
         self.firstName = data['firstName']

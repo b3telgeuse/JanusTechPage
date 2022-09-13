@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+
+
+
+<body class="bg-secondary">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid px-3 py-1">
+                {% block menu %} {% include 'menu.html' %} {% endblock menu %}
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="messages">
+        {% with messages = get_flashed_messages() %}
+            {%if messages %}
+                {% for m in messages %}
+                    <h5 class="ms-3">{{m}}</h5>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+
+<!-- Main -->
+    <main>
+        <div class="d-flex">
+            <!-- Left Side -->
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <h2 class="ms-4 mt-3 mb-1 fs-2 text-warning font-monospace">Who we are . . .</h2>
+                    <a class=" btn btn-success mx-3 d-flex align-self-end fw-bold fs-5" href="/addTree/">+</a>
+                </div>
+                <div class="">
+                        {% for tree in trees %}
+                            <div class="card m-4 bg-white" style="width: 35rem; --bs-bg-opacity: .7;">
+                                <div class="card-body ">
+                                    <div class="d-flex justify-content-between">
+                                        <h3 class="card-subtitle mb-2 fs-3">{{tree.species}}</h3>
+                                        <h4 class="card-subtitle me-1 mb-2 fs-5 text-muted align-self-center">{{tree.location}}</h4>
+                                    </div>
+                                    <h4 class="card-subtitle mb-2 fs-6 text-dark">{{tree.reason}}</h4>
+                                </div>
+                                <div class="d-flex justify-content-evenly pb-3">
+                                    {% if user.id == tree.user_id %}
+                                    <a class="btn btn-primary px-4" href="/tree/{{tree.id}}/view/">View</a> <a class="btn btn-primary px-4" href="/tree/{{tree.id}}/edit/">Edit</a> <a class="btn btn-danger px-4" href="/tree/{{tree.id}}/delete/">Delete</a>
+                                    {% else %}
+                                        <a class="btn btn-primary px-4" href="/tree/{{tree.id}}/view/">View</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            </div>
+            <!-- Right Side -->
+            <div>
+                <div class="mt-3">
+                    <h2 class="mx-4 ms-5 mb-1 fs-2 text-warning font-monospace">What we've done . . .</h2>
+                </div>
+                <div class="card my-4 mx-5 p-1" style="width: 69rem; height: 47             rem;">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h5 class="card-title">Microsoft</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Aliquam accumsan turpis libero, et facilisis quam pellentesque eu. Phasellus sagittis justo nec nisi placerat feugiat. Phasellus rhoncus quam quam, eget euismod nisi imperdiet sed. Curabitur vel velit scelerisque, feugiat mauris id, sollicitudin nunc. In pellentesque massa vitae feugiat laoreet. Mauris at eros augue. Duis in est et turpis blandit dictum. Aliquam hendrerit hendrerit dui, ac luctus dolor. Maecenas a rutrum enim. Nulla at urna cursus magna egestas sodales sit amet ultricies tellus. Nunc efficitur tellus lectus, id luctus enim maximus eget. Pellentesque ullamcorper tempor facilisis.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="card-title">Sentara Health Care</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc ultrices ipsum non turpis porta blandit. Sed eu nulla eu nibh semper condimentum. Suspendisse potenti. Integer ut leo id quam feugiat cursus convallis a magna. Donec quis turpis egestas, finibus arcu ac, porta massa. Nam tincidunt, tellus id ultrices ornare, ipsum lorem pretium urna, eu commodo quam felis vitae nibh. Sed ac erat efficitur, posuere ante eu, vulputate metus. Quisque varius ante et sollicitudin ullamcorper. Aliquam cursus arcu dui, eu finibus ipsum interdum non. Phasellus ligula sem, pretium sed nibh vitae, ultricies auctor lectus. Duis sagittis sagittis massa a egestas.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="card-title">The National Archives</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Fusce dignissim tortor sed purus interdum, a porttitor nisl viverra. Praesent tempus, justo euismod venenatis hendrerit, lectus tellus vulputate quam, quis luctus neque velit vel diam. Cras vel tempus nisl. Sed ex mauris, facilisis eget convallis vel, placerat elementum felis. Suspendisse enim elit, vulputate ac lobortis eget, varius sed urna. Fusce pharetra lacus metus, vel convallis ex vulputate non. Sed et nulla ac nulla ullamcorper hendrerit ac et elit. In est risus, euismod in feugiat ac, facilisis vel nibh. Sed ac elit ut velit egestas consequat.</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">Google</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis et purus sit amet lobortis. Curabitur nisi odio, fringilla quis elementum at, iaculis ut sem. Cras eget sem maximus, molestie purus non, laoreet arcu. Etiam varius lectus diam, quis volutpat eros venenatis et. Etiam sed posuere velit. Sed facilisis feugiat urna, eu luctus lacus ultrices et. Phasellus suscipit, ipsum id aliquet pharetra, mauris dui aliquet enim, et auctor neque sapien in velit. Fusce lobortis dolor ac dui molestie, sed semper velit bibendum.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- contact -->
+                <div class="d-flex justify-content-end ">
+                    <div class="card m-5 bg-light" style="width: 30rem;">
+                        <div class="card-body ">
+                            <div>
+                                <h5 class="card-title fs-4">Contact Us . . .</h5>
+                            </div>
+                            <div class="d-flex ">
+                                <div> 
+                                    <div class="">
+                                        <label for="InputEmail1" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 12rem;">
+                                    </div>
+                                    <div class="">
+                                        <label for="Name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" style="width: 12rem;">
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary mt-2">Send</button>
+                                </div>
+                                <div class="mx-4">
+                                    <label for="message">Message</label>
+                                    <textarea name="reason" class="form-control mt-1" id="" cols="30" rows="6"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+</html>

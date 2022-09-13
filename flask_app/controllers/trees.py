@@ -28,7 +28,7 @@ def createTree():
         'user_id': request.form['user_id'],
     }
     Trees.save(data)
-    return redirect('/dashboard/')
+    return redirect('/about/')
 
 
 
@@ -87,12 +87,6 @@ def deleteTree(trees_id):
         'id': trees_id
     }
     Trees.delete(data)
-    return redirect('/dashboard/')
+    return redirect('/about/')
 
 
-
-@app.route('/visitTree/')
-def visitTree():
-    visitors = []
-    visitors.append(User.fullName)
-    return redirect('/dashboard/')

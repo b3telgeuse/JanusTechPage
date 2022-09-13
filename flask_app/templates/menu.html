@@ -2,12 +2,27 @@
 <html lang="en">
 <body>
     {% block menu %}
-    <a class="btn btn-secondary mb-0 h1" href="/">Dashboard</a>
-    <a class=" btn btn-outline-warning" href="/addTree/">Plant A Tree</a>
-    <div>
-        <a class=" btn btn-outline-primary" href="/usersTrees/">My Trees</a>
-        <a class=" btn btn-outline-danger" href="/logout/">Logout</a>
+    <h2 class="text-light fst-italic font-monospace">Janus Technologies</h2>
+    <div class="d-flex">
+        <ul class="navbar-nav ">
+            <li class="nav-item">
+                <a class="nav-link active fs-5 mx-4 text-light" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fs-5 active mx-4 text-light"  href="/about/">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fs-5 active mx-4 text-light"  href="/library/">Library</a>
+            </li>
+            <li class="nav-item">
+                <a class=" btn btn-outline-danger" href="/logout/">Logout</a>
+            </li>
+        </ul>
     </div>
     {% endblock menu %}
 </body>
 </html>
+
+
+
+<!--     <a class=" btn btn-success" href="/addTree/">+</a> -->
